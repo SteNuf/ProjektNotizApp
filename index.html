@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="styles.css" />
     <script src="index.js"></script>
     <title>Notiz-App</title>
@@ -11,15 +10,14 @@
   <body>
     <div class="notiz-container-frame">
       <div class="left-sidebar">
-        <button id="new-notice">
-          Neue Notiz erstellen
+        <button id="new-notice" class="new-notice-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-6"
+            class="icon-plus"
           >
             <path
               stroke-linecap="round"
@@ -27,22 +25,26 @@
               d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
             />
           </svg>
+          <p class="inside-button">Notiz erstellen</p>
         </button>
-        <button id="test-1">TestNotizSidebar</button>
-        <button id="test-2">TestNotizSidebar</button>
+        <!-- <button id="test-1">TestNotizSidebar</button>
+        <button id="test-2">TestNotizSidebar</button>-->
       </div>
       <div class="main-content-field">
         <div class="title-save-delete">
-          <input type="text" placeholder="Überschrift eingegben..." />
+          <input
+            type="text"
+            id="notice-title-input"
+            placeholder="Überschrift eingegeben..."
+          />
           <button class="save">
-            Test
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6"
+              class="icon-save"
             >
               <path
                 stroke-linecap="round"
@@ -52,14 +54,13 @@
             </svg>
           </button>
           <button class="delete">
-            Löschen
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6"
+              class="icon-delete"
             >
               <path
                 stroke-linecap="round"
