@@ -1,6 +1,7 @@
 :root {
   --primary-color-button: rgba(74, 228, 228, 0.925);
   --primary-color-border: rgba(119, 243, 243, 0.993);
+  --primary-color-hover: rgba(218, 230, 230, 0.993);
 }
 
 body {
@@ -21,6 +22,7 @@ body {
   padding-right: 1rem;
   padding-left: 1rem;
   border-right: 1px solid var(--primary-color-button);
+  overflow-y: scroll;
 }
 
 .new-notice-button {
@@ -28,8 +30,16 @@ body {
   background-color: var(--primary-color-button);
   border: none;
   border-radius: 15px;
-  width: 160px;
+  width: 180px;
   height: 55px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.new-notice-button:hover,
+.save:hover,
+.delete:hover {
+  background-color: var(--primary-color-hover);
 }
 
 .icon-plus {
@@ -48,30 +58,43 @@ body {
   margin: 1rem;
 }
 
+.title-save-delete {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
 #notice-title-input {
   font-size: 3rem;
   font-weight: 700;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.2rem;
   border: none;
   margin-bottom: 1rem;
+  width: 90%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .save,
 .delete {
   background-color: var(--primary-color-button);
   border: none;
+  width: 50px;
+  height: 50px;
 }
 
 .icon-save,
 .icon-delete {
-  width: 48px;
-  height: 48px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
 }
 
 #text-area-content {
   border: none;
   letter-spacing: 0.1rem;
-  width: 100vh;
+  width: 1500px;
   height: 90vh;
   font-size: 2rem;
 }
