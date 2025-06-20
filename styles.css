@@ -49,7 +49,8 @@
 }
 .new-notice-button:hover,
 .save:hover,
-.delete:hover {
+.delete:hover,
+.notice-entry-list:hover {
   background-color: var(--primary-color-hover);
 }
 
