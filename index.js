@@ -30,7 +30,24 @@ noticeEntryListDiv.setAttribute("data-id", "6");
 
 const noticeEntryListTitleDiv = document.createElement("div");
 noticeEntryListTitleDiv.classList.add("notice-entry-list-title");
-
 const noticeEntryListTitle = document.createTextNode("Test 1");
 
-console.log(noticeEntryListDiv, noticeEntryListTitleDiv, noticeEntryListTitle);
+const noticeEntryListContentDiv = document.createElement("div");
+noticeEntryListContentDiv.classList.add("notice-entry-list-content");
+
+const noticeEntryListContent = document.createTextNode("sdhdsjhdsjdsl");
+
+const noticeEntryListDateDiv = document.createElement("div");
+noticeEntryListDateDiv.classList.add("notice-entry-list-date");
+
+const noticeEntryListDate = document.createTextNode("10.06.2025");
+
+noticeEntryListTitleDiv.appendChild(noticeEntryListTitle);
+noticeEntryListContentDiv.appendChild(noticeEntryListContent);
+noticeEntryListDateDiv.appendChild(noticeEntryListDate);
+
+noticeEntryListDiv.appendChild(noticeEntryListTitleDiv);
+noticeEntryListDiv.appendChild(noticeEntryListContentDiv);
+noticeEntryListDiv.appendChild(noticeEntryListDateDiv);
+
+console.log(noticeEntryListDiv);
