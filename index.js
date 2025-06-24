@@ -31,7 +31,7 @@ console.log(objectNotice);
 
   const noticeEntryListTitleDiv = document.createElement("div");
   noticeEntryListTitleDiv.classList.add("notice-entry-list-title");
-  const noticeEntryListTitle = document.createTextNode(test.title);
+  const noticeEntryListTitle = document.createTextNode("Notiz 1");
 
   const noticeEntryListContentDiv = document.createElement("div");
   noticeEntryListContentDiv.classList.add("notice-entry-list-content");
@@ -51,5 +51,7 @@ console.log(objectNotice);
   noticeEntryListDiv.appendChild(noticeEntryListContentDiv);
   noticeEntryListDiv.appendChild(noticeEntryListDateDiv);
 
-  document.getElementById("notes-lists").appendChild(noticeEntryListDiv);
+  /*document.getElementById("notes-lists").appendChild();*/
+
+  console.log(noticeEntryListDiv);
 
