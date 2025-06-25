@@ -1,4 +1,4 @@
-let objectNotice = [
+const objectNotice = [
   {
     title: "Notiz 1",
     content: "Die ist ein kleiner Text.",
@@ -41,7 +41,9 @@ console.log(objectNotice);
   const noticeEntryListDateDiv = document.createElement("div");
   noticeEntryListDateDiv.classList.add("notice-entry-list-date");
 
-  const noticeEntryListDate = document.createTextNode("10.06.2025");
+
+  const dateNotice = new Date(Date.UTC(2025, 5, 25, 18, 50, 22));
+  const noticeEntryListDate = document.createTextNode(dateNotice.toLocaleString("de-DE"));
 
   noticeEntryListTitleDiv.appendChild(noticeEntryListTitle);
   noticeEntryListContentDiv.appendChild(noticeEntryListContent);
@@ -51,7 +53,7 @@ console.log(objectNotice);
   noticeEntryListDiv.appendChild(noticeEntryListContentDiv);
   noticeEntryListDiv.appendChild(noticeEntryListDateDiv);
 
-  /*document.getElementById("notes-lists").appendChild();*/
+  document.getElementById("notes-lists").appendChild(noticeEntryListDiv);
 
   console.log(noticeEntryListDiv);
 
