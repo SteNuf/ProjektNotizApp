@@ -16,7 +16,7 @@ const objectNotice = [
   {
     title: "Notiz 3",
     content: "Lorem Ipsum",
-    íd: 3,
+    id: 3,
     lastUpdate: "",
   },
 ];
