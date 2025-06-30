@@ -1,29 +1,59 @@
-const objectNotice = [
+const notesListElement = document.querySelector('.notes-list');
+
+const MOCK_Notes =
+[
   {
     title: "Notiz 1",
     content: "Die ist ein kleiner Text.",
     id: 1,
-    lastUpdate: "",
+    lastUpdate: new Date().getTime(),
   },
 
   {
     title: "Notiz 2",
     content: "Lorem ipsum zur Notiz 2.",
     id: 2,
-    lastUpdate: "",
+    lastUpdate: new Date().getTime(),
   },
 
   {
     title: "Notiz 3",
     content: "Lorem Ipsum",
     id: 3,
-    lastUpdate: "",
+    lastUpdate: new Date().getTime(),
+  },
+
+  {
+    title: "Notiz 4",
+    content: "Lorem Ipsum",
+    id: 4,
+    lastUpdate: new Date().getTime(),
+  },
+
+
+  {
+    title: "Notiz 5",
+    content: "Lorem Ipsum",
+    id: 5,
+    lastUpdate: new Date().getTime(),
+  },
+
+  {
+    title: "Notiz 6",
+    content: "Lorem Ipsum",
+    id: 6,
+    lastUpdate: new Date().getTime(),
   },
 ];
-console.log(objectNotice);
 
 
-  
+
+
+
+
+
+  /* Mein Lösungsvorschlag:
+
   const noticeEntryListDiv = document.createElement("div");
   noticeEntryListDiv.classList.add("notice-entry-list");
   noticeEntryListDiv.classList.add("select-actuality");
@@ -56,4 +86,4 @@ console.log(objectNotice);
   document.getElementById("notes-lists").appendChild(noticeEntryListDiv);
 
   console.log(noticeEntryListDiv);
-
+*/
