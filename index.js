@@ -46,7 +46,15 @@ const MOCK_Notes =
   },
 ];
 
+function displayNotesList() {
+  const notes = MOCK_Notes;
 
+  let html = '';
+
+  notesListElement.innerHTML = html;
+
+
+}
 
 
 
