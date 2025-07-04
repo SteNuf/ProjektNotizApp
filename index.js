@@ -1,5 +1,14 @@
 const notesListElement = document.querySelector('.notes-list');
+const noticeSaveButtonElement = document.querySelector('.save');
+const titleInputElmement = document.getElementById("notice-title-input");
+const contentTextInputElement = document.getElementById("text-area-content");
 
+noticeSaveButtonElement.addEventListener("click",  clickSaveButton);
+
+/*
+function noticeSaveButton() {
+  console.log("Hallo");
+}*/
 
 function displayNotesList() {
   const notes = MOCK_Notes;
@@ -19,6 +28,17 @@ function displayNotesList() {
   })
 
   notesListElement.innerHTML = html;
+}
+
+function clickSaveButton() {
+  const title =titleInputElmement.value;
+  const content =titleInputElmement.value;  
+  console.log(title, content);
+
+  if(!title || !content) {
+    alert ("Bitte Title und Inhalt eingeben!");
+    return;
+  }
 }
 
 displayNotesList();
