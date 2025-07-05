@@ -1,9 +1,11 @@
-const notesListElement = document.querySelector('.notes-list');
-const noticeSaveButtonElement = document.querySelector('.save');
+const notesListElement = document.querySelector(".notes-list");
+const noticeSaveButtonElement = document.querySelector(".save");
 const titleInputElmement = document.getElementById("notice-title-input");
 const contentTextInputElement = document.getElementById("text-area-content");
 
-noticeSaveButtonElement.addEventListener("click",  clickSaveButton);
+noticeSaveButtonElement.addEventListener("click", clickSaveButton);
+
+displayNotesList();
 
 /*
 function noticeSaveButton() {
@@ -11,42 +13,44 @@ function noticeSaveButton() {
 }*/
 
 function displayNotesList() {
-  const notes = MOCK_Notes;
+  const notes = getNotes();
 
-  const sortedNotes=notes.sort((noteA, noteB)=> noteB.lastUpdate -noteA.lastUpdate);
+  const sortedNotes = notes.sort(
+    (noteA, noteB) => noteB.lastUpdate - noteA.lastUpdate
+  );
 
   let html = "";
 
-  sortedNotes.forEach(note => {
+  sortedNotes.forEach((note) => {
     html += `
     <div class="notice-entry-list select-actuality" data-id="${note.id}">
             <div class="notice-entry-list-title">${note.title}</div>
             <div class="notice-entry-list-content">${note.content}</div>
-            <div class="notice-entry-list-date">${new Date(note.lastUpdate).toLocaleString(("de-DE"))}</div>
+            <div class="notice-entry-list-date">${new Date(
+              note.lastUpdate
+            ).toLocaleString("de-DE")}</div>
           </div> 
     `;
-  })
+  });
 
   notesListElement.innerHTML = html;
 }
 
 function clickSaveButton() {
-  const title =titleInputElmement.value;
-  const content =titleInputElmement.value;  
+  const title = titleInputElmement.value;
+  const content = titleInputElmement.value;
   console.log(title, content);
 
-  if(!title || !content) {
-    alert ("Bitte Title und Inhalt eingeben!");
+  if (!title || !content) {
+    alert("Bitte Title und Inhalt eingeben!");
     return;
   }
+
+  saveNotes(title, content);
+  displayNotesList();
 }
 
-displayNotesList();
-
-
-
-
-  /* Mein Lösungsvorschlag:
+/* Mein Lösungsvorschlag:
 
   const noticeEntryListDiv = document.createElement("div");
   noticeEntryListDiv.classList.add("notice-entry-list");

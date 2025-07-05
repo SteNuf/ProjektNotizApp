@@ -1,46 +1,19 @@
+const LOCALE_STORAGE_KEY = "notices-app";
 
-const MOCK_Notes =
-[
-  {
-    title: "Notiz 1",
-    content: "Die ist ein kleiner Text.",
-    id: 1,
-    lastUpdate: 1751626816836,
-  },
+function getNotes() {
+  return JSON.parse(localStorage.getItem(LOCALE_STORAGE_KEY)) || [];
+}
 
-  {
-    title: "Notiz 2",
-    content: "Lorem ipsum zur Notiz 2.",
-    id: 2,
-    lastUpdate: 1751626826836,
-  },
+function saveNotes(title, content) {
+  const notes = getNotes();
 
-  {
-    title: "Notiz 3",
-    content: "Lorem Ipsum",
-    id: 3,
-    lastUpdate: 1751626836836,
-  },
+  notes.push({
+    title,
+    content,
+    id:"hallo",
+    lastUpdate: new Date().getTime(),
+  });
+  
+localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(notes));
 
-  {
-    title: "Notiz 4",
-    content: "Lorem Ipsum",
-    id: 4,
-    lastUpdate: 1751626846836,
-  },
-
-
-  {
-    title: "Notiz 5",
-    content: "Lorem Ipsum",
-    id: 5,
-    lastUpdate: 1751626856836,
-  },
-
-  {
-    title: "Notiz 6",
-    content: "Lorem Ipsum",
-    id: 6,
-    lastUpdate:1751626866836,
-  },
-];
+}
