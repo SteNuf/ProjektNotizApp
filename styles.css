@@ -50,6 +50,7 @@
 .new-notice-button:hover,
 .save:hover,
 .delete:hover,
+.select-actuality-notes,
 .notice-entry-list:hover {
   background-color: var(--primary-color-hover);
 }

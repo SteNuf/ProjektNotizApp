@@ -4,15 +4,29 @@ function getNotes() {
   return JSON.parse(localStorage.getItem(LOCALE_STORAGE_KEY)) || [];
 }
 
-function saveNotes(title, content) {
+function saveNotes(title, content, id = undefined) {
   const notes = getNotes();
 
-  notes.push({
-    title,
-    content,
-    id: getNextId(),
-    lastUpdate: new Date().getTime(),
-  });
+  //Hier zählt auch NaN als false!
+  if (!id) {
+    notes.push({
+      title,
+      content,
+      id: getNextId(),
+      lastUpdate: new Date().getTime(),
+    });
+  } else {
+    const indexOfNoteWithId = notes.findIndex((note) => note.id === id);
+
+    if (indexOfNoteWithId > -1) {
+      notes[indexOfNoteWithId] = {
+        title,
+        content,
+        id,
+        lastUpdate: new Date().getTime(),
+      };
+    }
+  }
 
   localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(notes));
 }

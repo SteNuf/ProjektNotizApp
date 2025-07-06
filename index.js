@@ -1,11 +1,23 @@
 const notesListElement = document.querySelector(".notes-list");
 const noticeSaveButtonElement = document.querySelector(".save");
+const newNoteButtonElement = document.querySelector(".new-notice-button");
 const titleInputElmement = document.getElementById("notice-title-input");
 const contentTextInputElement = document.getElementById("text-area-content");
 
 noticeSaveButtonElement.addEventListener("click", clickSaveButton);
+newNoteButtonElement.addEventListener("click", newNotes);
 
 displayNotesList();
+applyListner();
+
+function applyListner() {
+  const noteEntriesElement = document.querySelectorAll(".notice-entry-list");
+  noteEntriesElement.forEach((noteEntry) => {
+    noteEntry.addEventListener("click", () =>
+      selectNote(noteEntry.getAttribute("data-id"))
+    );
+  });
+}
 
 /*
 function noticeSaveButton() {
@@ -23,7 +35,7 @@ function displayNotesList() {
 
   sortedNotes.forEach((note) => {
     html += `
-    <div class="notice-entry-list select-actuality" data-id="${note.id}">
+    <div class="notice-entry-list" data-id="${note.id}">
             <div class="notice-entry-list-title">${note.title}</div>
             <div class="notice-entry-list-content">${note.content}</div>
             <div class="notice-entry-list-date">${new Date(
@@ -46,11 +58,58 @@ function clickSaveButton() {
     return;
   }
 
-  saveNotes(title, content);
+  let currentId = undefined;
+
+  const currentlySelectedNoteElement = document.querySelector(
+    ".select-actuality-notes"
+  );
+
+  if (currentlySelectedNoteElement) {
+    currentId = currentlySelectedNoteElement.getAttribute("data-id");
+  }
+
+  saveNotes(title, content, Number(currentId));
+
   titleInputElmement.value = "";
   contentTextInputElement.value = "";
 
   displayNotesList();
+  applyListner();
+}
+
+function selectNote(id) {
+  const selectNoteElement = document.querySelector(
+    `.notice-entry-list[data-id="${id}"]`
+  );
+
+  if (selectNoteElement.classList.contains("select-actuality-notes")) return;
+
+  removeSelectedClassFromAllNotes();
+
+  selectNoteElement.classList.add("select-actuality-notes");
+
+  const notes = getNotes();
+
+  const selectedNote = notes.find((note) => note.id === Number(id));
+
+  if (!selectedNote) return;
+
+  titleInputElmement.value = selectedNote.title;
+  contentTextInputElement.value = selectedNote.content;
+}
+
+function newNotes() {
+  titleInputElmement.value = "";
+  contentTextInputElement.value = "";
+
+  removeSelectedClassFromAllNotes();
+}
+
+function removeSelectedClassFromAllNotes() {
+  const noteEntriesElement = document.querySelectorAll(".notice-entry-list");
+  noteEntriesElement.forEach((noteEntry) => {
+    noteEntry.classList.remove("select-actuality-notes");
+  });
 }
 
 /* Mein Lösungsvorschlag:
