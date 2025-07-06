@@ -38,15 +38,18 @@ function displayNotesList() {
 
 function clickSaveButton() {
   const title = titleInputElmement.value;
-  const content = titleInputElmement.value;
+  const content = contentTextInputElement.value;
   console.log(title, content);
 
   if (!title || !content) {
-    alert("Bitte Title und Inhalt eingeben!");
+    alert("Bitte Titel und Inhalt eingeben!");
     return;
   }
 
   saveNotes(title, content);
+  titleInputElmement.value = "";
+  contentTextInputElement.value = "";
+
   displayNotesList();
 }
 
