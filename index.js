@@ -1,11 +1,13 @@
 const notesListElement = document.querySelector(".notes-list");
 const noticeSaveButtonElement = document.querySelector(".save");
+const delelteButtonElement = document.querySelector(".delete");
 const newNoteButtonElement = document.querySelector(".new-notice-button");
 const titleInputElmement = document.getElementById("notice-title-input");
 const contentTextInputElement = document.getElementById("text-area-content");
 
 noticeSaveButtonElement.addEventListener("click", clickSaveButton);
 newNoteButtonElement.addEventListener("click", newNotes);
+delelteButtonElement.addEventListener("click", clickDeleteButton);
 
 displayNotesList();
 applyListner();
@@ -58,17 +60,21 @@ function clickSaveButton() {
     return;
   }
 
-  let currentId = undefined;
+  saveNotes(title, content, Number(getCurrentSelectedId()));
 
-  const currentlySelectedNoteElement = document.querySelector(
-    ".select-actuality-notes"
-  );
+  titleInputElmement.value = "";
+  contentTextInputElement.value = "";
 
-  if (currentlySelectedNoteElement) {
-    currentId = currentlySelectedNoteElement.getAttribute("data-id");
-  }
+  displayNotesList();
+  applyListner();
+}
 
-  saveNotes(title, content, Number(currentId));
+function clickDeleteButton() {
+  const currentlySelectedId = getCurrentSelectedId();
+
+  if (!currentlySelectedId) return;
+
+  deleteNote(currentlySelectedId);
 
   titleInputElmement.value = "";
   contentTextInputElement.value = "";
@@ -110,6 +116,20 @@ function removeSelectedClassFromAllNotes() {
   noteEntriesElement.forEach((noteEntry) => {
     noteEntry.classList.remove("select-actuality-notes");
   });
+}
+
+function getCurrentSelectedId() {
+  let currentId = undefined;
+
+  const currentlySelectedNoteElement = document.querySelector(
+    ".select-actuality-notes"
+  );
+
+  if (currentlySelectedNoteElement) {
+    currentId = currentlySelectedNoteElement.getAttribute("data-id");
+  }
+
+  return currentId;
 }
 
 /* Mein Lösungsvorschlag:

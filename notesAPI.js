@@ -31,6 +31,16 @@ function saveNotes(title, content, id = undefined) {
   localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(notes));
 }
 
+function deleteNote(id) {
+  if (!id) return;
+
+  const notes = getNotes();
+
+  const filteredNotes = notes.filter((note) => note.id !== Number(id));
+
+  localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(filteredNotes));
+}
+
 function getNextId() {
   const notes = getNotes();
 
