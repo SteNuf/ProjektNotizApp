@@ -1,13 +1,13 @@
 const notesListElement = document.querySelector(".notes-list");
 const noticeSaveButtonElement = document.querySelector(".save");
-const delelteButtonElement = document.querySelector(".delete");
+const deleteButtonElement = document.querySelector(".delete");
 const newNoteButtonElement = document.querySelector(".new-notice-button");
 const titleInputElmement = document.getElementById("notice-title-input");
 const contentTextInputElement = document.getElementById("text-area-content");
 
 noticeSaveButtonElement.addEventListener("click", clickSaveButton);
 newNoteButtonElement.addEventListener("click", newNotes);
-delelteButtonElement.addEventListener("click", clickDeleteButton);
+deleteButtonElement.addEventListener("click", clickDeleteButton);
 
 displayNotesList();
 applyListner();
