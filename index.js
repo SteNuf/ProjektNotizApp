@@ -38,8 +38,10 @@ function displayNotesList() {
   sortedNotes.forEach((note) => {
     html += `
     <div class="notice-entry-list" data-id="${note.id}">
-            <div class="notice-entry-list-title">${note.title}</div>
-            <div class="notice-entry-list-content">${note.content}</div>
+            <div class="notice-entry-list-title">${escapeHtml(note.title)}</div>
+            <div class="notice-entry-list-content">${escapeHtml(
+              note.content
+            )}</div>
             <div class="notice-entry-list-date">${new Date(
               note.lastUpdate
             ).toLocaleString("de-DE")}</div>
@@ -130,6 +132,15 @@ function getCurrentSelectedId() {
   }
 
   return currentId;
+}
+
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 /* Mein Lösungsvorschlag:
