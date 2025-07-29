@@ -1,8 +1,8 @@
 const notesListElement = document.querySelector(".notes-list");
 const noticeSaveButtonElement = document.querySelector(".save");
 const deleteButtonElement = document.querySelector(".delete");
-const newNoteButtonElement = document.querySelector(".new-notice-button");
-const titleInputElmement = document.getElementById("notice-title-input");
+const newNoteButtonElement = document.querySelector(".new-note-button");
+const titleInputElmement = document.getElementById("note-title-input");
 const contentTextInputElement = document.getElementById("text-area-content");
 
 noticeSaveButtonElement.addEventListener("click", clickSaveButton);
@@ -13,18 +13,13 @@ displayNotesList();
 applyListner();
 
 function applyListner() {
-  const noteEntriesElement = document.querySelectorAll(".notice-entry-list");
+  const noteEntriesElement = document.querySelectorAll(".note-entry-list");
   noteEntriesElement.forEach((noteEntry) => {
     noteEntry.addEventListener("click", () =>
       selectNote(noteEntry.getAttribute("data-id"))
     );
   });
 }
-
-/*
-function noticeSaveButton() {
-  console.log("Hallo");
-}*/
 
 function displayNotesList() {
   const notes = getNotes();
@@ -37,12 +32,12 @@ function displayNotesList() {
 
   sortedNotes.forEach((note) => {
     html += `
-    <div class="notice-entry-list" data-id="${note.id}">
-            <div class="notice-entry-list-title">${escapeHtml(note.title)}</div>
-            <div class="notice-entry-list-content">${escapeHtml(
+    <div class="note-entry-list" data-id="${note.id}">
+            <div class="note-entry-list-title">${escapeHtml(note.title)}</div>
+            <div class="note-entry-list-content">${escapeHtml(
               note.content
             )}</div>
-            <div class="notice-entry-list-date">${new Date(
+            <div class="note-entry-list-date">${new Date(
               note.lastUpdate
             ).toLocaleString("de-DE")}</div>
           </div> 
@@ -87,14 +82,14 @@ function clickDeleteButton() {
 
 function selectNote(id) {
   const selectNoteElement = document.querySelector(
-    `.notice-entry-list[data-id="${id}"]`
+    `.note-entry-list[data-id="${id}"]`
   );
 
-  if (selectNoteElement.classList.contains("select-actuality-notes")) return;
+  if (selectNoteElement.classList.contains("curently-notes")) return;
 
   removeSelectedClassFromAllNotes();
 
-  selectNoteElement.classList.add("select-actuality-notes");
+  selectNoteElement.classList.add("curently-notes");
 
   const notes = getNotes();
 
@@ -114,18 +109,17 @@ function newNotes() {
 }
 
 function removeSelectedClassFromAllNotes() {
-  const noteEntriesElement = document.querySelectorAll(".notice-entry-list");
+  const noteEntriesElement = document.querySelectorAll(".note-entry-list");
   noteEntriesElement.forEach((noteEntry) => {
-    noteEntry.classList.remove("select-actuality-notes");
+    noteEntry.classList.remove("curently-notes");
   });
 }
 
 function getCurrentSelectedId() {
   let currentId = undefined;
 
-  const currentlySelectedNoteElement = document.querySelector(
-    ".select-actuality-notes"
-  );
+  const currentlySelectedNoteElement =
+    document.querySelector(".curently-notes");
 
   if (currentlySelectedNoteElement) {
     currentId = currentlySelectedNoteElement.getAttribute("data-id");
@@ -142,39 +136,3 @@ function escapeHtml(unsafe) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
-
-/* Mein Lösungsvorschlag:
-
-  const noticeEntryListDiv = document.createElement("div");
-  noticeEntryListDiv.classList.add("notice-entry-list");
-  noticeEntryListDiv.classList.add("select-actuality");
-  noticeEntryListDiv.setAttribute("data-id", "6");
-
-  const noticeEntryListTitleDiv = document.createElement("div");
-  noticeEntryListTitleDiv.classList.add("notice-entry-list-title");
-  const noticeEntryListTitle = document.createTextNode("Notiz 1");
-
-  const noticeEntryListContentDiv = document.createElement("div");
-  noticeEntryListContentDiv.classList.add("notice-entry-list-content");
-
-  const noticeEntryListContent = document.createTextNode("sdhdsjhdsjdsl");
-
-  const noticeEntryListDateDiv = document.createElement("div");
-  noticeEntryListDateDiv.classList.add("notice-entry-list-date");
-
-
-  const dateNotice = new Date(Date.UTC(2025, 5, 25, 18, 50, 22));
-  const noticeEntryListDate = document.createTextNode(dateNotice.toLocaleString("de-DE"));
-
-  noticeEntryListTitleDiv.appendChild(noticeEntryListTitle);
-  noticeEntryListContentDiv.appendChild(noticeEntryListContent);
-  noticeEntryListDateDiv.appendChild(noticeEntryListDate);
-
-  noticeEntryListDiv.appendChild(noticeEntryListTitleDiv);
-  noticeEntryListDiv.appendChild(noticeEntryListContentDiv);
-  noticeEntryListDiv.appendChild(noticeEntryListDateDiv);
-
-  document.getElementById("notes-lists").appendChild(noticeEntryListDiv);
-
-  console.log(noticeEntryListDiv);
-*/
