@@ -1,11 +1,11 @@
 const notesListElement = document.querySelector(".notes-list");
-const noticeSaveButtonElement = document.querySelector(".save");
+const noteSaveButtonElement = document.querySelector(".save");
 const deleteButtonElement = document.querySelector(".delete");
 const newNoteButtonElement = document.querySelector(".new-note-button");
 const titleInputElmement = document.getElementById("note-title-input");
 const contentTextInputElement = document.getElementById("text-area-content");
 
-noticeSaveButtonElement.addEventListener("click", clickSaveButton);
+noteSaveButtonElement.addEventListener("click", clickSaveButton);
 newNoteButtonElement.addEventListener("click", newNotes);
 deleteButtonElement.addEventListener("click", clickDeleteButton);
 
@@ -23,7 +23,6 @@ function applyListner() {
 
 function displayNotesList() {
   const notes = getNotes();
-
   const sortedNotes = notes.sort(
     (noteA, noteB) => noteB.lastUpdate - noteA.lastUpdate
   );
@@ -32,7 +31,7 @@ function displayNotesList() {
 
   sortedNotes.forEach((note) => {
     html += `
-    <div class="note-entry-list" data-id="${note.id}">
+      <div class="note-entry-list" data-id="${note.id}">
             <div class="note-entry-list-title">${escapeHtml(note.title)}</div>
             <div class="note-entry-list-content">${escapeHtml(
               note.content
@@ -40,7 +39,7 @@ function displayNotesList() {
             <div class="note-entry-list-date">${new Date(
               note.lastUpdate
             ).toLocaleString("de-DE")}</div>
-          </div> 
+      </div> 
     `;
   });
 

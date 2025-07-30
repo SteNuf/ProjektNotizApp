@@ -1,4 +1,4 @@
-const LOCALE_STORAGE_KEY = "notices-app";
+const LOCALE_STORAGE_KEY = "notes-app";
 
 function getNotes() {
   return JSON.parse(localStorage.getItem(LOCALE_STORAGE_KEY)) || [];
